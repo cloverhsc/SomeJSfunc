@@ -1,0 +1,80 @@
+graph {
+    rankdir=BT;
+    ranksep=1;
+    午餐 -- {四川, 新學友, 瓏記}[style=dashed];
+	subgraph 四川{
+        四川 -- {主菜, 小菜, 湯}[color=red];
+        四川[shape=polygon,sides=8,color=purple, width=1,height=.5];
+        主菜[shape=box,color=yellow,style=filled];
+        subgraph cluster_main_curse{
+            label = 主菜;
+            fontsize= 22;
+            fillcolor = purple;
+            style=filled;
+            fontcolor="#FFFFFF";
+            node[shape=box, fontcolor="#40e0d0"]
+            主菜 -- 牛肉麵[color=red] ;
+            主菜 -- 榨菜肉絲麵[color=red] ;
+            主菜 -- 酸辣麵[color=red] ;
+            主菜 -- 炸醬麵[color=red] ;
+            主菜 -- 乾麵[color=red] ;
+            主菜 -- 餛飩麵[color=red] ;
+        }
+        subgraph cluster_appetizer{
+            node[shape=record];
+            struct1[label="<f0> 海帶|<f1> 豆乾|<f2> 豬頭皮|<f3> 滷牛肉|<f4> 土豆|<f5> 餛飩|<f6> 小黃瓜"]
+            小菜 -- struct1:f2[splines=ortho,color=red];
+        }
+        subgraph cluster_soup{
+            湯 -- {蛋花湯, 牛肉湯, 貢丸湯, 餛飩湯};
+        }
+    }
+
+    // 這也是註解
+    subgraph 新學友{
+        新學友 -- {主菜, 小菜, 湯}[color="#69a0d6"];
+        subgraph cluster_main_curse{
+            label = 主菜;
+            fontsize= 22;
+            fillcolor = skyblue;
+            style=filled;
+            fontcolor=red;
+            主菜 -- 牛肉麵;
+            主菜 -- 雞排麵;
+            主菜 -- 酸辣麵;
+            主菜 -- 酸辣水餃;
+            主菜 -- 肉絲炒麵;
+            主菜 -- 肉絲炒飯;
+        }
+        subgraph cluster_appetizer{
+            小菜 -- {海帶,豆乾,豬頭皮,米血,百頁豆腐};
+        }
+        subgraph cluster_soup{
+            湯 -- {蛋花湯, 牛肉湯, 貢丸湯, 酸辣湯};
+        }
+    }
+
+    /* 這
+       是
+       註
+       解
+    */
+    subgraph 瓏記{
+        瓏記 -- {主菜};
+        subgraph cluster_main_curse{
+            label = 主菜;
+            fontsize= 22;
+            fillcolor = skyblue;
+            style=filled;
+            fontcolor=red;
+            主菜 -- 四寶飯;
+            主菜 -- 三寶飯;
+            主菜 -- 蜜汁雞腿飯;
+            主菜 -- 烤鴨腿飯;
+            主菜 -- 腊肉香腸飯;
+            主菜 -- 叉燒香腸飯;
+            主菜 -- 油雞腿飯;
+            主菜 -- 叉燒燒肉飯;
+        }
+    };
+}

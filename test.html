@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript</title>
+    </head>
+    <body>
+        <script >
+        // 把類陣列轉成陣列，在下面用來把arguments物件轉成真正的陣列。
+        function array(a, n){return Array.prototype.slice.call(a, n || 0);}
+
+        // 這個函式的引數是從左方傳入
+        function partialLeft(f /*...*/)
+        {
+            var args = arguments;
+            return function(){
+                var a = array(args,1);
+                console.log(a.toString());
+                a = a.concat(array(arguments));
+                return f.apply(this, a);
+            };
+        }
+
+        // 這個函式的引數是從右方傳入
+        function partialRight(f /*...*/)
+        {
+            var args = arguments;
+            return function(){
+                var a = array(arguments);
+                a = a.concat(array(args,1));
+                return f.apply(this,a);
+            };
+        }
+
+        // 這個函式的引數作為範本之用。引數列中的undefined值使用內層的值來填補。
+        function partial(f /*...*/)
+        {
+            var args = arguments;
+            return function(){
+                var a = array(args, 1);     //從外層引數的陣列開始
+                var i = 0 , j = 0;
+                //逐一查看這些引數，使用來自內層的值填補undefined值
+                for(;i < a.length; i++)
+                    if (a[i] === undefined) a[i] = arguments[j++];
+                // 現在附加任何剩下的內層引數
+                a = a.concat(array(arguments, j));
+                return f.apply(this, a);
+            };
+        }
+
+        var f = function(x,y,z){return x*(y-z);};
+
+        partialLeft(f,2)(3,4);
+        partialRight(f,2)(3,4);
+        partial(f, undefined, 2)(3,4);
+
+        </script>
+    </body>
+</html>
