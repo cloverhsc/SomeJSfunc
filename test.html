@@ -3,6 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Javascript</title>
+        <script>
+            window.onload = function(){
+                console.log("hi clover!");
+            };
+        </script>
     </head>
     <body>
         <script >
@@ -53,6 +58,16 @@
         partialLeft(f,2)(3,4);
         partialRight(f,2)(3,4);
         partial(f, undefined, 2)(3,4);
+
+        </script>
+        <button id="mybutton">Click me</button>
+        <script>
+            var b = document.getElementById("mybutton");
+            // b.onclick = function(){ alert("Thank you for click me."); };
+            // b.addEventListener("click", function(){ alert("Thanks againe.");}, false);
+            b.onclick = function(){ console.log("Thank you for click me."); };
+            b.addEventListener("click", function(){ console.log("Thanks againe.");}, false);
+            b.addEventListener("click", function(){ console.log("HAHAHAHA.");}, false);
 
         </script>
     </body>
