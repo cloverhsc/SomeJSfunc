@@ -70,5 +70,24 @@
             b.addEventListener("click", function(){ console.log("HAHAHAHA.");}, false);
 
         </script>
+        <script src="getScrollOffsets.js"></script>    <!-- drag() 需要這個 -->
+        <script src="Dragjs"></script>                      <!-- 定義 drag() -->
+        <!-- 要被拖拉的元素 -->
+        <div style="position:absolute; left:100px; top:100px; width:250px; background-color:#69a0d6; border:solid black;">
+                <!-- 用來拖拉的 titlebar  注意其onmousedown屬性 -->
+                <div style="background-color:gray; border-bottom: dotted black; padding:3px; font-family:sans-serif; font-weight:bold;" onmousedown="drag(this.parentNode, event);">
+                    Drag Me <!-- titlebar 內容 -->
+                </div>
+        <!-- 可拖拉元素內容 -->
+                <p>
+                    This is a test. Testing, testing, testing.
+                </p>
+                <p>
+                    Clover
+                </p>
+                <p>
+                    WOW
+                </p>
+        </div>
     </body>
 </html>
