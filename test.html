@@ -3,8 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <title>Javascript</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     </head>
     <body>
+        <span class="sparkline" data-ymin="0" data-ymax="10">
+            1 1 1 2 2 3 4 5 5 4 3 5 6 7 7 4 2 1 <i>clover</i>
+            <script>
+                var test = 1;
+            </script>
+        </span>
         <script >
         // 把類陣列轉成陣列，在下面用來把arguments物件轉成真正的陣列。
         function array(a, n){return Array.prototype.slice.call(a, n || 0);}
@@ -54,6 +61,38 @@
         partialRight(f,2)(3,4);
         partial(f, undefined, 2)(3,4);
 
+        </script>
+        <iframe id='f1'></iframe>
+
+        <div id="editor" contenteditable>
+            Click to edit
+        </div>
+
+        <ul id='todo-list'>
+            <li>Exercise</li>
+            <li>Learn Javascript</li>
+            <li>Weite a blog</li>
+        </ul>
+        <script>
+            var todos = [];
+
+            function generateDataModel()
+            {
+                todos = [];
+                $('#todo-list li').each(function(i, el){
+                    todos.push({text: el.innerText});
+                });
+            }
+
+            generateDataModel()
+            console.log(todos);
+        </script>
+        <button id='clear' onclick='clearAllTodo()'>Clear all</button>
+        <script>
+            function clearAllTodo(){
+                $('#todo-list').empty();
+                generateDataModel();
+            }
         </script>
     </body>
 </html>
