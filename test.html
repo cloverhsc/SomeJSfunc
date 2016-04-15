@@ -96,6 +96,28 @@
         </script>
 
         <!--  -->
+        <br />
+        <ul class="td-list">
+            <script>
+                var tds=[
+                    {text: 'Clover'},
+                    {text: 'HandSome'},
+                    {text: 'Rich'},
+                    {text: 'Smart'},
+                ];
 
+                function renderTodoList(){
+                    $('.td-list').empty();
+
+                    tds.map(function(el){
+                        $('.td-list').append(new $('<li>'+ el.text + '</li>'));
+                    })
+                }
+
+                renderTodoList();
+            </script>
+        </ul>
+
+        <ul class="td-list"></ul>
     </body>
 </html>
